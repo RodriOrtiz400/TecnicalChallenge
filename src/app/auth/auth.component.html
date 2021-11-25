@@ -21,7 +21,6 @@
                                     <label class="label">Company</label>
 
                                     <div class="input-field col s12">
-
                                         <select class="form-control" formControlName="airline">
                       <option
                         *ngFor="let airline of airlines"
@@ -34,21 +33,21 @@
                                     <label class="label">Username</label>
                                     <div class="input-field col s12">
                                         <input type="text" class="form-control" formControlName="username" placeholder="Username" />
-
-
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="label">Password</label>
                                     <div class="input-field col s12">
                                         <input type="password" class="form-control" formControlName="password" placeholder="*****" />
-
-
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" [disabled]="!authForm.valid" (click)="login()" class="btn btn-primary submit-btn btn-block">
+                                    <button type="submit" [disabled]="!authForm.valid" (click)="login()" class="btn btn-primary submit-btn btn-block" *ngIf="!loading">
                     Log In
+                  </button>
+                                    <button type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block" *ngIf="loading">
+                  <i class="fas fa-spinner"></i>
+                    Please wait...
                   </button>
                                 </div>
                                 <div class="text-block text-center my-3">

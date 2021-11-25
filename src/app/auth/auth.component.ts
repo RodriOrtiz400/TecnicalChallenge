@@ -22,7 +22,7 @@ export class AuthComponent implements OnInit {
     private router: Router
   ) { 
     this.authForm = this.formBuilder.group({
-      airline: [''],
+      airline: ['HAWAIIAN AIRLINES (HA)'],
       username: ['', [ Validators.required, Validators.minLength(4) ]],  
       password: ['', [ Validators.required, Validators.minLength(4) ]]
     })

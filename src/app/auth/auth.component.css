@@ -1,0 +1,33 @@
+@import url('../../css/fontawesome/css/all.min.css');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css');
+@import url('https://unpkg.com/leaflet@1.5.1/dist/leaflet.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
+*,
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.login--container {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../assets/img/login_background.jpg');
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form--error-card {
+    background-color: #e12f20;
+    color: white;
+    padding: 20px;
+    font-size: 1.1em;
+    display: none;
+}

@@ -6,6 +6,9 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AirlineService {
+
+  listHotels!: any[];
+
   constructor(private httpClient: HttpClient) {}
 
   getAirlines(): Observable<any> {
@@ -14,4 +17,5 @@ export class AirlineService {
       .get<any>(url)
       .pipe(map((res: any[]) => res.map((airline) => airline.display_name)));
   }
+
 }

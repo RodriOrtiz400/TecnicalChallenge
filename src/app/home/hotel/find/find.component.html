@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+<div class="page-body-wrapper full-page-wrapper auth-page">
+    <div class="container">
+        <div class="
+          content-wrapper
+          d-flex
+          align-items-center
+          auth auth-bg-1
+          theme-one
+        ">
+
+            <div class="row w-100">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auto-form-wrapper">
+                        <div class="row" style="text-align: center">
+                            <img src="../../assets/img/white-logo.png" alt="ID90 Travel" class="custom-logo" />
+                        </div>
+                        <form [formGroup]="findForm">
+                            <div class="form-group">
+                                <label class="label">Destino, ciudad, direccion</label>
+                                <div class="input-field col s12">
+                                    <input type="text" class="form-control" formControlName="destination" placeholder="Destino, ciudad, dirección" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="label">Invitados</label>
+                                <div class="input-field col s12">
+                                    <input type="text" class="form-control" formControlName="guests" placeholder="Invitados" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" [disabled]="!findForm.valid" (click)="findHotels()" class="btn btn-primary submit-btn btn-block" *ngIf="!loading">
+                                  Buscar
+                                </button>
+                                <button type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block" *ngIf="loading">
+                                  <i class="fas fa-spinner"></i>
+                                  Aguarde...
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>

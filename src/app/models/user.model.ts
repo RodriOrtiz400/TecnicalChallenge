@@ -1,16 +1,18 @@
-/*export class User {
+export class User {
+  public id!: number;
+  public firstName!: string;
+  public lastName!: string;
+  public profileImageUrl!: string;
 
-    static userFromDb( { id, first_name, last_name, profile_image_url  } ) {
-        return new User( id, first_name, last_name, profile_image_url)
-    }
-
-    constructor(
-        public id: number,
-        public firstName: string,
-        public lastName: string,
-        public profileImageUrl: string
-
-    ){}
-     
+  constructor(
+    id: number,
+    firstName: string,
+    lastName: string,
+    profileImageUrl: string
+  ) {
+    this.id = id;
+    this.firstName= firstName
+    this.lastName=lastName
+    this.profileImageUrl=profileImageUrl
+  }
 }
-*/

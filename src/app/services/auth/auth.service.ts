@@ -4,7 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import * as authActions from '../../auth/auth.actions';
-//import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +20,8 @@ export class AuthService {
     return this.httpClient.post<any>(url, { username, password }).pipe(
       tap((res) => {
         if (res.member.id) {
-          //const user = User.userFromDb ( res.member )
-          this.store.dispatch( authActions.setUser({ user: res.member }))
+          var userapp = new User(res.member.id, res.member.first_name, res.member.last_name, res.member.profile_image_url)
+          this.store.dispatch( authActions.setUser({ user: userapp}))
           sessionStorage.setItem('id', res.member.id);
         }
       })

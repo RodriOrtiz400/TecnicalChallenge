@@ -15,20 +15,18 @@
                             <div class="row" style="text-align: center">
                                 <img src="../../assets/img/white-logo.png" alt="ID90 Travel" class="custom-logo" />
                             </div>
-
                             <form [formGroup]="authForm">
                                 <div class="form-group">
                                     <label class="label">Company</label>
-
                                     <div class="input-field col s12">
                                         <select class="form-control" formControlName="airline">
-                      <option
-                        *ngFor="let airline of airlines"
-                        [value]="airline"
-                      >
-                        {{ airline }}
-                      </option>
-                    </select>
+                                          <option
+                                          *ngFor="let airline of airlines"
+                                          [value]="airline"
+                                          >
+                                          {{ airline }}
+                                          </option>
+                                        </select>
                                     </div>
                                     <label class="label">Username</label>
                                     <div class="input-field col s12">
@@ -43,23 +41,22 @@
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" [disabled]="!authForm.valid" (click)="login()" class="btn btn-primary submit-btn btn-block" *ngIf="!loading">
-                    Log In
-                  </button>
+                                    Log In
+                                    </button>
                                     <button type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block" *ngIf="loading">
-                  <i class="fas fa-spinner"></i>
-                    Please wait...
-                  </button>
+                                    <i class="fas fa-spinner"></i>
+                                    Please wait...
+                                    </button>
                                 </div>
                                 <div class="text-block text-center my-3">
                                     <br />
-                                    <a class="text-black text-small">Need Help Logging In?</a
-                  >
+                                    <a class="text-black text-small">Need Help Logging In?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

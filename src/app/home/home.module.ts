@@ -7,28 +7,19 @@ import { NavbarComponent } from '../shared/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-
-
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    HomeComponent, NavbarComponent
-  ],
+  declarations: [HomeComponent, NavbarComponent],
   imports: [
+    HomeRoutingModule,
     CommonModule,
     HomeRoutingModule,
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule
-    
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

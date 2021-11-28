@@ -23,13 +23,26 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <mat-label class="label">Seleccione Fecha de Salida y Regreso</mat-label>
+                                <div class="input-field col s12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-date-range-input [formGroup]="rangeForm" [rangePicker]="picker">
+                                            <input matStartDate formControlName="start" placeholder="Check In">
+                                            <input matEndDate formControlName="end" placeholder="Check Out">
+                                        </mat-date-range-input>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-date-range-picker #picker></mat-date-range-picker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="label">Invitados</label>
                                 <div class="input-field col s12">
                                     <input type="text" class="form-control" formControlName="guests" placeholder="Invitados" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" [disabled]="!findForm.valid" (click)="findHotels()" class="btn btn-primary submit-btn btn-block" *ngIf="!loading">
+                                <button type="submit" [disabled]="!findForm.valid" (click)="getHotels()" class="btn btn-primary submit-btn btn-block" *ngIf="!loading">
                                   Buscar
                                 </button>
                                 <button type="button" [disabled]="true" class="btn btn-primary submit-btn btn-block" *ngIf="loading">

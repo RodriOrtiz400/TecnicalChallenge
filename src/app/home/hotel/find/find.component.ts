@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { HotelService } from '../../../services/hotel/hotel.service';
 import { DatePipe } from '@angular/common';
 import { AppState } from '../../../store/app.reducer';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-find',
@@ -36,9 +37,9 @@ export class FindComponent implements OnInit {
     private datePipe: DatePipe
   ) {
     this.findForm = this.formBuilder.group({
-      destination: ['' /*, [Validators.required, Validators.minLength(4)]*/],
+      destination: ['', Validators.required],
       range: [''],
-      guests: ['' /*, [Validators.required, Validators.minLength(4)]*/],
+      guests: ['', [Validators.required, Validators.min(1), Validators.max(4)]],
     });
   }
 
@@ -65,7 +66,12 @@ export class FindComponent implements OnInit {
     const values = this.findForm.value;
     if (checkin && checkout) {
       this.hotelServ
-        .getHotels(values.destination, checkin, checkout, values.guests as number)
+        .getHotels(
+          values.destination,
+          checkin,
+          checkout,
+          values.guests as number
+        )
         .subscribe(
           (res) => {
             if (res.hotels[0].name) {

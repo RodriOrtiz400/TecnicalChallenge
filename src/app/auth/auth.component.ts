@@ -7,8 +7,8 @@ import { Subscription } from 'rxjs';
 
 import { AirlineService } from '../services/airline/airline.service';
 import { AuthService } from '../services/auth/auth.service';
-import { AppState } from '../app.reducer';
-import * as ui from '../shared/ui.actions';
+import * as ui from '../store/ui.actions';
+import { AppState } from '../store/app.reducer';
 
 @Component({
   selector: 'app-auth',

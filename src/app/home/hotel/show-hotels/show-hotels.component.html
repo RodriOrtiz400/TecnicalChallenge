@@ -1,0 +1,14 @@
+<div class="container">
+    <mat-card *ngFor="let hotel of hotels" class="example-card">
+        <mat-card-header>
+            <mat-card-title>{{hotel.name}}</mat-card-title>
+            <mat-card-subtitle>Estrellas: {{hotel.star_rating}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="image" src="http:{{hotel.image}}" alt="Photo of {{hotel.name}}">
+        <mat-card-content>
+            <p>Locación: {{hotel.location_description}}</p>
+            <p>Precio por noche: {{hotel.display_rate}}</p>
+            <p>Total: {{hotel.total}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -2,13 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import Swal from 'sweetalert2';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
 
 import { AirlineService } from '../services/airline/airline.service';
 import { AuthService } from '../services/auth/auth.service';
-import * as ui from '../store/ui.actions';
-import { AppState } from '../store/app.reducer';
+import * as ui from '../store/actions/ui.actions';
+import { AppState } from '../store/reducers/app.reducers';
 
 @Component({
   selector: 'app-auth',

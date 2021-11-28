@@ -4,12 +4,7 @@ export class User {
   public lastName!: string;
   public imgUrl!: string;
 
-  constructor(
-    id: number,
-    firstName: string,
-    lastName: string,
-    imgUrl: string
-  ) {
+  constructor(id: number, firstName: string, lastName: string, imgUrl: string) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;

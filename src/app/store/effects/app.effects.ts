@@ -13,7 +13,6 @@
 //     setLoading$ = createEffect(() => {
 //         return this.actions$.pipe(
 //                 ofType(isLoading),
-//                 tap ( data => console.log('effect tap ', data)),
 //                 mergeMap(
 //                     ()=>  
 //                 )

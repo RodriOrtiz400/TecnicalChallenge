@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +7,9 @@ import { User } from '../../models/user.model';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) {
-    
-  }
-
-  ngOnInit(): void {   
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy() {
     sessionStorage.clear();
@@ -23,5 +18,4 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout() {
     this.router.navigateByUrl('/auth');
   }
-
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormBuilder,
@@ -7,12 +9,12 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import * as ui from '../../../store/ui.actions';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+
+import * as ui from '../../../store/actions/ui.actions';
 import { HotelService } from '../../../services/hotel/hotel.service';
-import { DatePipe } from '@angular/common';
-import { AppState } from '../../../store/app.reducer';
+import { AppState } from '../../../store/reducers/app.reducers';
+import { getHotels } from '../../../store/actions/hotels.actions';
 
 @Component({
   selector: 'app-find',
@@ -63,7 +65,7 @@ export class FindComponent implements OnInit {
       'YYYY-MM-dd'
     );
     const values = this.findForm.value;
-    if (checkin && checkout) {
+    if (checkin && checkout) { /* Bloque reemplazado por Effects
       this.hotelServ
         .getHotels(
           values.destination,
@@ -92,7 +94,9 @@ export class FindComponent implements OnInit {
               text: 'There is a problem with user or password',
             });
           }
-        );
+        ); */
+
+        this.store.dispatch( getHotels() )
     }
   }
 }

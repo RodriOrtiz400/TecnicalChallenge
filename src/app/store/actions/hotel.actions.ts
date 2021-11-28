@@ -1,12 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 
 export const getHotel = createAction(
-  '[Hotels] Get Hotel'
+  '[Hotels] Get Hotel',
+  props<{
+    id: string;
+  }>()
 );
 
 export const getHotelSucces = createAction(
   '[Hotels] Get Hotel Success',
-  props<{ hotels: any[] }>()
+  props<{ hotel: any }>()
 );
 
 export const getHotelError = createAction(

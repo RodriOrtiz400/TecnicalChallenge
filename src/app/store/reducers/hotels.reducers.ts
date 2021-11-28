@@ -25,7 +25,7 @@ const _hotelReducer = createReducer(
     ...state,
     loading: false,
     loaded: true,
-    hotels: [...hotels],
+    hotels: hotels,
   })),
 
   on(getHotelsError, (state, { payload }) => ({

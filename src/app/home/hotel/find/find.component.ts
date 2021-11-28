@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 import { HotelService } from '../../../services/hotel/hotel.service';
 import { DatePipe } from '@angular/common';
 import { AppState } from '../../../store/app.reducer';
-import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-find',

@@ -13,7 +13,7 @@ export class ShowHotelsComponent implements OnInit, OnDestroy {
   constructor(private hotelServ: HotelService) {}
 
   ngOnInit(): void {
-    this.hotels = this.hotelServ.hotels;
+    this.hotels = this.hotelServ.hotels;    
   }
 
   ngOnDestroy() {}

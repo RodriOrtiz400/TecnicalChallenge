@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 
 @Injectable({
@@ -21,7 +21,18 @@ export class HotelService {
     return this.httpClient.get<any>(url).pipe(
       tap((res) => {
         if (res.hotels) {
-          this.hotels = res.hotels;
+          this.hotels = res.hotels;      
+        }
+      })
+    );
+  }
+
+  getHotelById( id: string ): Observable<any> {
+    const url = `https://beta.id90travel.com/api/v1/hotels.json?id=${id}`;
+    return this.httpClient.get<any>(url).pipe(
+      map((res) => {
+        if (res) {       
+          //TODO Return info Hotel
         }
       })
     );

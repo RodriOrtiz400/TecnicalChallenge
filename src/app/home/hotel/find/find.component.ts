@@ -64,8 +64,12 @@ export class FindComponent implements OnInit {
       this.rangeForm.controls['end'].value,
       'YYYY-MM-dd'
     );
+    const destination: string = this.findForm.value.destination;
+    const guests: number = this.findForm.value.guests;
+    if (checkin && checkout) {
+// Bloque reemplazado por Effects 
     const values = this.findForm.value;
-    if (checkin && checkout) { /* Bloque reemplazado por Effects
+    if (checkin && checkout) { 
       this.hotelServ
         .getHotels(
           values.destination,
@@ -91,12 +95,16 @@ export class FindComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'There is a problem with user or password',
+              text: 'Something went wrong! Please, try again.',
             });
           }
-        ); */
-
-        this.store.dispatch( getHotels() )
+        ); 
+      // this.store.dispatch(
+      //   getHotels({ destination, checkin, checkout, guests })
+      // );
+      // this.router.navigateByUrl('/home/hotels/showHotels');
     }
   }
 }
+}
+

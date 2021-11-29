@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -29,6 +24,8 @@ export class FindComponent implements OnInit {
     start: [''],
     end: [''],
   });
+
+  testVar: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,6 +51,10 @@ export class FindComponent implements OnInit {
     this.uiSubscrip.unsubscribe();
   }
 
+  testFunction() {
+    this.testVar = 'notEmpty';
+  }
+
   getHotels() {
     this.store.dispatch(ui.isLoading());
     const checkin = this.datePipe.transform(
@@ -67,44 +68,44 @@ export class FindComponent implements OnInit {
     const destination: string = this.findForm.value.destination;
     const guests: number = this.findForm.value.guests;
     if (checkin && checkout) {
-// Bloque reemplazado por Effects 
-    const values = this.findForm.value;
-    if (checkin && checkout) { 
-      this.hotelServ
-        .getHotels(
-          values.destination,
-          checkin,
-          checkout,
-          values.guests as number
-        )
-        .subscribe(
-          (res) => {
-            if (res.hotels[0].name) {
+      // Bloque reemplazado por Effects
+      const values = this.findForm.value;
+      if (checkin && checkout) {
+        this.hotelServ
+          .getHotels(
+            values.destination,
+            checkin,
+            checkout,
+            values.guests as number
+          )
+          .subscribe(
+            (res) => {
+              if (res.hotels[0].name) {
+                this.store.dispatch(ui.stopLoading());
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 500,
+                });
+                this.router.navigateByUrl('/home/hotels/showHotels');
+              }
+            },
+            (error) => {
               this.store.dispatch(ui.stopLoading());
               Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 500,
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong! Please, try again.',
               });
-              this.router.navigateByUrl('/home/hotels/showHotels');
             }
-          },
-          (error) => {
-            this.store.dispatch(ui.stopLoading());
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong! Please, try again.',
-            });
-          }
-        ); 
-      // this.store.dispatch(
-      //   getHotels({ destination, checkin, checkout, guests })
-      // );
-      // this.router.navigateByUrl('/home/hotels/showHotels');
+          );
+        // this.store.dispatch(
+        //   getHotels({ destination, checkin, checkout, guests })
+        // );
+        // this.store.dispatch(ui.stopLoading());
+        // this.router.navigateByUrl('/home/hotels/showHotels');
+      }
     }
   }
 }
-}
-

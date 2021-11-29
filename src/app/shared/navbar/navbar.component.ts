@@ -1,5 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import { AppState } from '../../store/reducers/app.reducers';
+import * as ui from '../../store/actions/ui.actions';
+import { uiReducer } from '../../store/reducers/ui.reducers';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private store: Store<AppState>,
+    ) {}
 
   ngOnInit(): void {}
 
@@ -16,6 +25,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
+    this.store.dispatch(ui.stopLoading());
     this.router.navigateByUrl('/auth');
   }
 }

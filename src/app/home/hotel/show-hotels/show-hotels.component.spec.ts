@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShowHotelsComponent } from './show-hotels.component';
@@ -8,7 +9,9 @@ describe('ShowHotelsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowHotelsComponent ]
+      declarations: [ ShowHotelsComponent ],
+      imports: [ HttpClientModule ]
+
     })
     .compileComponents();
   });

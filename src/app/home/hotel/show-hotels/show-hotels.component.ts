@@ -9,11 +9,12 @@ import { HotelService } from '../../../services/hotel/hotel.service';
 })
 export class ShowHotelsComponent implements OnInit, OnDestroy {
   hotels: any[] = [];
+  loadingHotels: boolean = false;
 
   constructor(private hotelServ: HotelService) {}
 
   ngOnInit(): void {
-    this.hotels = this.hotelServ.hotels;    
+    this.hotels = this.hotelServ.hotels;
   }
 
   ngOnDestroy() {}

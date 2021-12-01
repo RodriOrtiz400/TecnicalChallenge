@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ShowHotelsComponent } from './show-hotels.component';
 
 describe('ShowHotelsComponent', () => {
@@ -9,11 +8,9 @@ describe('ShowHotelsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShowHotelsComponent ],
-      imports: [ HttpClientModule ]
-
-    })
-    .compileComponents();
+      declarations: [ShowHotelsComponent],
+      imports: [HttpClientModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

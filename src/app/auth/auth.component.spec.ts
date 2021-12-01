@@ -1,15 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
-import {
-  ActionsSubject,
-  ReducerManager,
-  ReducerManagerDispatcher,
-  StateObservable,
-  Store,
-} from '@ngrx/store';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
+import { StoreModule } from '@ngrx/store';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -18,14 +12,11 @@ describe('AuthComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AuthComponent],
-      imports: [HttpClientModule],
-      providers: [
-        FormBuilder,
-        ReducerManager,
-        Store,
-        StateObservable,
-        ActionsSubject,
-        ReducerManagerDispatcher,
+      imports: [
+        HttpClientModule,
+        StoreModule.forRoot({}),
+        ReactiveFormsModule,
+        RouterTestingModule,
       ],
     }).compileComponents();
   });

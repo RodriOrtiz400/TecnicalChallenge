@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { getHotels, getHotelsError, getHotelsSucces } from '../actions/index';
+import { getHotels, getHotelsError, getHotelsSucces, logoutHotels } from '../actions/index';
 
 export interface HotelsState {
   hotels: any[];
@@ -33,7 +33,14 @@ const _hotelReducer = createReducer(
     loading: false,
     loaded: false,
     error: payload,
-  }))
+  })),
+
+  on(logoutHotels, (state)=> ({
+    hotels: hotelsInitialState.hotels,
+    loaded: hotelsInitialState.loaded,
+    loading: hotelsInitialState.loading,
+    error: hotelsInitialState.error,
+  }) )
 );
 
 export function hotelReducer(state: any, action: any) {

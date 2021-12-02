@@ -18,3 +18,8 @@ export const getHotelsError = createAction(
   '[Hotels] Get Hotels Error',
   props<{ payload: any }>()
 );
+
+export const logoutHotels = createAction('[Hotels] Log Out');
+
+
+

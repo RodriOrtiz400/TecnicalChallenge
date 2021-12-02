@@ -1,12 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import Swal from 'sweetalert2';
 
 import { AirlineService } from '../services/airline/airline.service';
-import { AuthService } from '../services/auth/auth.service';
+import { logIn } from '../store/actions/auth.actions';
 import * as ui from '../store/actions/ui.actions';
 import { AppState } from '../store/reducers/app.reducers';
 
@@ -23,9 +21,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authLogin: AuthService,
     private airline: AirlineService,
-    private router: Router,
     private store: Store<AppState>
   ) {
     this.authForm = this.formBuilder.group({
@@ -64,28 +60,29 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   login() {
     this.store.dispatch(ui.isLoading());
-    const values = this.authForm.value;
-    this.authLogin.login(values.username, values.password).subscribe(
-      (res) => {
-        if (res.member.id) {
-          this.store.dispatch(ui.stopLoading());
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          this.router.navigateByUrl('/home');
-        }
-      },
-      (error) => {
-        this.store.dispatch(ui.stopLoading());
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'There is a problem with user or password',
-        });
-      }
-    );
+    const { username, password, airline } = this.authForm.value;
+    // this.authLogin.login(values.username, values.password).subscribe(
+    //   (res) => {
+    //     if (res.member.id) {
+    //       this.store.dispatch(ui.stopLoading());
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'success',
+    //         showConfirmButton: false,
+    //         timer: 500,
+    //       });
+    //       this.router.navigateByUrl('/home');
+    //     }
+    //   },
+    //   (error) => {
+    //     this.store.dispatch(ui.stopLoading());
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Oops...',
+    //       text: 'There is a problem with user or password',
+    //     });
+    //   }
+    // );
+    this.store.dispatch(logIn({ username, password, airline }));
   }
 }

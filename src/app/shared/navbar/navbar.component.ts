@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { AppState } from '../../store/reducers/app.reducers';
-import * as ui from '../../store/actions/ui.actions';
-import { uiReducer } from '../../store/reducers/ui.reducers';
+import * as actions from '../../store/actions';
 
 
 @Component({
@@ -25,7 +24,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.store.dispatch(ui.stopLoading());
+    this.store.dispatch(actions.stopLoading());
+    this.store.dispatch(actions.logoutAuth());
+    this.store.dispatch(actions.logoutHotels());
+    this.store.dispatch(actions.logoutHotel());
+
     this.router.navigateByUrl('/auth');
   }
 }

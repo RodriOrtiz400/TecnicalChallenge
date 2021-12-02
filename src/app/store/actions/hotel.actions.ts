@@ -1,18 +1,20 @@
 import { createAction, props } from '@ngrx/store';
 
 export const getHotel = createAction(
-  '[Hotels] Get Hotel',
+  '[Hotel] Get Hotel',
   props<{
     id: string;
   }>()
 );
 
 export const getHotelSucces = createAction(
-  '[Hotels] Get Hotel Success',
+  '[Hotel] Get Hotel Success',
   props<{ hotel: any }>()
 );
 
 export const getHotelError = createAction(
-  '[Hotels] Get Hotel Error',
+  '[Hotel] Get Hotel Error',
   props<{ payload: any }>()
 );
+
+export const logoutHotel = createAction('[Hotel] Log Out');

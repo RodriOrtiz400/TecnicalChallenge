@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AppState } from 'src/app/store/reducers';
 
-import { HotelService } from '../../../services/hotel/hotel.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-show-hotels',
@@ -11,10 +12,14 @@ export class ShowHotelsComponent implements OnInit, OnDestroy {
   hotels: any[] = [];
   loadingHotels: boolean = false;
 
-  constructor(private hotelServ: HotelService) {}
+  constructor(
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
-    this.hotels = this.hotelServ.hotels;
+    this.store.select('hotels').subscribe((hotels) => {
+      this.hotels = hotels.hotels;
+    });
   }
 
   ngOnDestroy() {}

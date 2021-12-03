@@ -18,8 +18,9 @@
                         <form [formGroup]="findForm">
                             <div class="form-group">
                                 <label class="label">Destino, ciudad, direccion</label>
-                                <div class="input-field col s12">
+                                <div class="input-field col s12" [class.is-invalid]="destinationValid">
                                     <input type="text" class="form-control" formControlName="destination" placeholder="Destino, ciudad, dirección" />
+                                    <small *ngIf="destinationValid" class="text-danger">Destino, ciudad, direccion is Required</small>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -37,8 +38,9 @@
                             </div>
                             <div class="form-group">
                                 <label class="label">Invitados</label>
-                                <div class="input-field col s12">
+                                <div class="input-field col s12" [class.is-invalid]="guestsValid">
                                     <input type="text" class="form-control" formControlName="guests" placeholder="Invitados" />
+                                    <small *ngIf="guestsValid" class="text-danger">Invitados must be between 1 and 4</small>
                                 </div>
                             </div>
                             <div class="form-group">

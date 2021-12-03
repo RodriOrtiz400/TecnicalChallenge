@@ -53,36 +53,14 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   get passwordValid() {
     return (
-      this.authForm.get('username')?.invalid &&
-      this.authForm.get('username')?.touched
+      this.authForm.get('password')?.invalid &&
+      this.authForm.get('password')?.touched
     );
   }
 
   login() {
     this.store.dispatch(ui.isLoading());
     const { username, password, airline } = this.authForm.value;
-    // this.authLogin.login(values.username, values.password).subscribe(
-    //   (res) => {
-    //     if (res.member.id) {
-    //       this.store.dispatch(ui.stopLoading());
-    //       Swal.fire({
-    //         position: 'top-end',
-    //         icon: 'success',
-    //         showConfirmButton: false,
-    //         timer: 500,
-    //       });
-    //       this.router.navigateByUrl('/home');
-    //     }
-    //   },
-    //   (error) => {
-    //     this.store.dispatch(ui.stopLoading());
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Oops...',
-    //       text: 'There is a problem with user or password',
-    //     });
-    //   }
-    // );
     this.store.dispatch(logIn({ username, password, airline }));
   }
 }

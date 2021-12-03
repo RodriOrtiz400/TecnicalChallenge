@@ -1,17 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+
+import { HotelsGuard } from './hotels.guard';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthGuard } from './auth.guard';
 import { StoreModule } from '@ngrx/store';
 
-describe('AuthGuard', () => {
-  let guard: AuthGuard;
+describe('HotelsGuard', () => {
+  let guard: HotelsGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, StoreModule.forRoot({})],
-      providers: [],
     });
-    guard = TestBed.inject(AuthGuard);
+    guard = TestBed.inject(HotelsGuard);
   });
 
   it('should be created', () => {

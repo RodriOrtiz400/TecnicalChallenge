@@ -26,14 +26,16 @@
                                         </select>
                                     </div>
                                     <label class="label">Username</label>
-                                    <div class="input-field col s12">
+                                    <div class="input-field col s12" [class.is-invalid]="usernameValid">
                                         <input type="text" class="form-control" formControlName="username" placeholder="Username" />
+                                        <small *ngIf="usernameValid" class="text-danger">Minimum 4 characteres</small>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="label">Password</label>
-                                    <div class="input-field col s12">
+                                    <div class="input-field col s12" [class.is-invalid]="passwordValid">
                                         <input type="password" class="form-control" formControlName="password" placeholder="*****" />
+                                        <small *ngIf="passwordValid" class="text-danger">Minimum 4 characteres</small>
                                     </div>
                                 </div>
                                 <div class="form-group">

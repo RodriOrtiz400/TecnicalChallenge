@@ -31,7 +31,15 @@ export class FindComponent implements OnInit {
     this.findForm = this.formBuilder.group({
       destination: ['', Validators.required],
       range: [''],
-      guests: ['', [Validators.required, Validators.min(1), Validators.max(4)]],
+      guests: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[0-5]+$'),
+          Validators.min(1),
+          Validators.max(4),
+        ],
+      ],
     });
   }
 
@@ -43,6 +51,20 @@ export class FindComponent implements OnInit {
 
   ngOnDestroy() {
     this.uiSubscrip.unsubscribe();
+  }
+
+  get destinationValid() {
+    return (
+      this.findForm.get('destination')?.invalid &&
+      this.findForm.get('destination')?.touched
+    );
+  }
+
+  get guestsValid() {
+    return (
+      this.findForm.get('guests')?.invalid &&
+      this.findForm.get('guests')?.touched
+    );
   }
 
   testFunction() {
